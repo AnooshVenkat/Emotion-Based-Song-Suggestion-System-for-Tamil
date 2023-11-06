@@ -151,8 +151,8 @@ def musicplayer():
 @app.route('/refresh', methods=['GET','POST'])
 def refresh():
 
-    CLIENT_ID = "87497b1a09094aa29244bcd9b4c3e843"
-    CLIENT_SECRET = "3a270da264f54cd19fe0c681d8232031"
+    CLIENT_ID = "****************************"
+    CLIENT_SECRET = "****************************"
 
     #Authentication - without user
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
