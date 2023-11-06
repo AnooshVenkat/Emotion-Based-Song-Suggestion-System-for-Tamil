@@ -75,12 +75,6 @@ import numpy as np
 from threading import Thread
 
 app = Flask(__name__, static_url_path='.\static')
-# def sql_connector():
-#     conn = pymysql.connect(user='root', password='', db = 'DETAILS', host = 'localhost')
-#     c = conn.cursor()
-#     return conn, c
-  
-
 
 
 @app.route('/')
@@ -88,66 +82,11 @@ def home():
     return render_template('index.html')
 
 
-
 @app.route('/musicplayer', methods=['GET','POST'])
 def musicplayer():
     return render_template('musicplayer.html')
   
-# @app.route('/login', methods=['GET','POST'])
-# def login():
-#     result = " "
-#     if request.method == 'POST':
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-#         conn, c = sql_connector()
-#         conn, d = sql_connector()
-#         P = c.execute("SELECT PASSWORD FROM DETAILS WHERE USERNAME = ('{}')".format(username))
-#         U = d.execute("SELECT USERNAME FROM DETAILS WHERE USERNAME = ('{}')".format(username))
-#         rows1 = c.fetchall()
-#         rows2 = d.fetchall()
-#         flag = 1
-#         if(len(rows2)==0):
 
-#             result = "CREATE AN ACCOUNT"
-#             flag = 0
-        
-#         if(flag == 1):
-
-#             user = ""
-#             entry = ""
-
-#             for i in rows2[0]:
-#                 user+=i
-
-#             for i in rows1[0]:
-#                 entry+=i
-            
-#             print(password)
-#             print(entry)
-
-#             if(password != entry):
-#                 result = "INCORRECT PASSWORD"
-#             else:
-#                 return render_template('userinput.html')
-
-#         conn.commit()
-#         conn.close()
-#         c.close()
-#         print(result)
-#     return render_template('login.html', message = result)
-
-# @app.route('/signup', methods=['GET','POST'])
-# def signup():
-#     if request.method == 'POST':
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-#         conn, c = sql_connector()
-#         c.execute("INSERT INTO DETAILS VALUES ('{}', '{}')".format(username, password))
-#         conn.commit()
-#         conn.close()
-#         c.close()
-#         return render_template('userinput.html')
-#     return render_template('signup.html')
 @app.route('/refresh', methods=['GET','POST'])
 def refresh():
 
