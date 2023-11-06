@@ -9,7 +9,6 @@ import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sympy import N
-# from deepface import DeepFace
 
 from csv import writer
 
@@ -93,7 +92,6 @@ def refresh():
     CLIENT_ID = "****************************"
     CLIENT_SECRET = "****************************"
 
-    #Authentication - without user
     client_credentials_manager = SpotifyClientCredentials(client_id=CLIENT_ID, client_secret=CLIENT_SECRET)
     sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
 
@@ -149,14 +147,7 @@ def refresh():
 
     print("Accuracy Score",accuracy_score(y_test,dtree_predictions))
     
-    # importing necessary libraries
-
-    # loading the iris dataset
-    iris = datasets.load_iris()
     gnb_pred=[]
-    # X -> features, y -> label
-    # X = iris.data
-    # y = iris.target
     max_accuracy=0
     max_i=0
     # dividing X, y into train and test data
@@ -706,17 +697,9 @@ face=0
 switch=1
 rec=0
 
-#make shots directory to save pics
-# try:
-#     os.mkdir('./shots')
-# except OSError as error:
-#     pass
 
 #Load pretrained face detection model    
 net = cv2.dnn.readNetFromCaffe('./saved_model/deploy.prototxt.txt', './saved_model/res10_300x300_ssd_iter_140000.caffemodel')
-
-#instatiate flask app  
-# app = Flask(__name__, template_folder='./templates')
 
 
 camera = cv2.VideoCapture(0)
@@ -763,7 +746,6 @@ def gen_frames():  # generate frame by frame from camera
             if(capture):
                 capture=0
                 now = datetime.datetime.now()
-                # p = os.path.sep.join("shot_{}.png".format(str(now).replace(":",'')))
                 cv2.imwrite("image.png", frame)
             
             if(rec):
@@ -783,9 +765,6 @@ def gen_frames():  # generate frame by frame from camera
         else:
             pass
 
-# @app.route('/camera')
-# def index():
-#     return render_template('userinput.html')
         
 @app.route('/video_feed')
 def video_feed():
